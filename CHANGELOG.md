@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - YYYY-MM-DD
+## [1.0.0] - 2025-03-26
 ### Added
 - Initial release of `phone_validator`.
 - Validates Bangladeshi phone numbers with prefixes (+88, 88, or none).

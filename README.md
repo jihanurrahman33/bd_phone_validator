@@ -1,4 +1,4 @@
-<h1>📱 Phone Validator</h1>
+<h1>📱BD Phone Validator</h1>
 
 <p>A <strong>Dart package</strong> for validating Bangladeshi phone numbers.</p>
 
@@ -15,7 +15,7 @@
 
 <pre><code>
 dependencies:
-  phone_validator: ^1.0.0
+  bd_phone_validator: ^1.0.0
 </code></pre>
 
 <p>Then, run:</p>
@@ -27,13 +27,13 @@ dependencies:
 <p>Import the package and validate numbers:</p>
 
 <pre><code>
-import 'package:phone_validator/phone_validator.dart';
+import 'package:bd_phone_validator/bd_phone_validator.dart';
 
 void main() {
-  print(PhoneValidator.validate("+8801712345678")); // true
-  print(PhoneValidator.validate("01712345678"));    // true
-  print(PhoneValidator.validate("8801912345678"));  // true
-  print(PhoneValidator.validate("0123456789"));     // false
+  print(BdPhoneValidator.validate("+8801712345678")); // true
+  print(BdPhoneValidator.validate("01712345678"));    // true
+  print(BdPhoneValidator.validate("8801912345678"));  // true
+  print(BdPhoneValidator.validate("0123456789"));     // false
 }
 </code></pre>
 
