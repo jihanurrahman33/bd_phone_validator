@@ -45,7 +45,7 @@ void main() {
 
 <h2>🔗 Repository</h2>
 
-<p>Find this package on <strong>GitHub</strong>: <a href="https://github.com/jihanurrahman33/bd_phone_validator">Your Repository Link Here</a></p>
+<p>Find this package on <strong>GitHub</strong>: <a href="https://github.com/jihanurrahman33/bd_phone_validator">Repository Link</a></p>
 
 <h2>📜 License</h2>
 
