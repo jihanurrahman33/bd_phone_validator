@@ -1,6 +1,6 @@
 name: bd_phone_validator
 description: A Dart package for validating Bangladeshi phone numbers.
-version: 1.0.0
+version: 1.0.2  
 repository: https://github.com/jihanurrahman33/bd_phone_validator
 
 environment:
