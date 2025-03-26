@@ -15,7 +15,7 @@
 
 <pre><code>
 dependencies:
-  bd_phone_validator: ^1.0.2
+  bd_phone_validator: ^1.0.3
 </code></pre>
 
 <p>Then, run:</p>
