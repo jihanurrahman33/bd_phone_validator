@@ -3,7 +3,7 @@ library bd_phone_validator;
 /// A Dart package for validating Bangladeshi phone numbers.
 class BdPhoneValidator {
   /// Regular expression for Bangladeshi phone number validation.
-  static final RegExp _regExp = RegExp(r"^(?:\+88|88)?(01[3-9]\d{8})$");
+  static final RegExp _regExp = RegExp(r'^(?:\+88|88)?(01[3-9]\d{8})$');
 
   /// Validates a phone number.
   ///
