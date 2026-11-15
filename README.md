@@ -1,56 +1,74 @@
-<h1>📱BD Phone Validator</h1>
+# 📱 bd_phone_validator
 
-<p>A <strong>Dart package</strong> for validating Bangladeshi phone numbers.</p>
+[![pub package](https://img.shields.io/pub/v/bd_phone_validator.svg)](https://pub.dev/packages/bd_phone_validator)
+[![CI](https://github.com/jihanurrahman33/bd_phone_validator/actions/workflows/ci.yml/badge.svg)](https://github.com/jihanurrahman33/bd_phone_validator/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-<h2>🚀 Features</h2>
-<ul>
-  <li>Supports <strong>+88</strong>, <strong>88</strong>, or no prefix (e.g., <code>+8801712345678</code>, <code>8801912345678</code>, <code>01712345678</code>).</li>
-  <li>Ensures proper Bangladeshi mobile number format <code>01[3-9]XXXXXXXX</code> (11 digits).</li>
-  <li>Simple and lightweight.</li>
-</ul>
+Validate, normalize, format and detect the operator of Bangladeshi mobile
+numbers. Pure Dart, zero dependencies, works in Flutter, server and CLI.
 
-<h2>📌 Installation</h2>
+## Features
 
-<p>Add this package to your <code>pubspec.yaml</code>:</p>
+- ✅ Validate `01XXXXXXXXX`, `8801XXXXXXXXX`, `+8801XXXXXXXXX` (prefixes `013`–`019`)
+- 🔁 Normalize to `01712345678` or E.164 `+8801712345678`
+- 📡 Operator detection: Grameenphone, Robi, Banglalink, Teletalk, Airtel
+- 🧹 Lenient mode: spaces, dashes, parentheses, `0088` prefix, Bangla digits (`০১৭…`)
+- 🎨 Formatting (`01712-345678`) and masking (`017XX-XXX678`)
+- 📝 Ready-made `TextFormField` validator, no Flutter dependency
 
-<pre><code>
+## Install
+
+```yaml
 dependencies:
-  bd_phone_validator: ^1.0.3
-</code></pre>
+  bd_phone_validator: ^1.1.0
+```
 
-<p>Then, run:</p>
+## Usage
 
-<pre><code>dart pub get</code></pre>
-
-<h2>🎯 Usage</h2>
-
-<p>Import the package and validate numbers:</p>
-
-<pre><code>
+```dart
 import 'package:bd_phone_validator/bd_phone_validator.dart';
 
-void main() {
-  print(BdPhoneValidator.validate("+8801712345678")); // true
-  print(BdPhoneValidator.validate("01712345678"));    // true
-  print(BdPhoneValidator.validate("8801912345678"));  // true
-  print(BdPhoneValidator.validate("0123456789"));     // false
-}
-</code></pre>
+BdPhoneValidator.validate('+8801712345678');            // true
+BdPhoneValidator.validate('017-1234-5678');             // false (strict default)
+BdPhoneValidator.validate('017-1234-5678', strict: false); // true
 
-<h2>🛠️ Running Tests</h2>
+BdPhoneValidator.normalize('+880 1712-345678');  // 01712345678
+BdPhoneValidator.toE164('01712345678');          // +8801712345678
+BdPhoneValidator.detectOperator('01812345678');  // BdOperator.robi
 
-<p>To run tests, execute:</p>
+final phone = BdPhoneValidator.tryParse('০১৭১২৩৪৫৬৭৮');
+phone?.operator.displayName; // Grameenphone
+phone?.formatted;            // 01712-345678
+phone?.masked;               // 017XX-XXX678
+```
 
-<pre><code>dart test</code></pre>
+### Flutter forms
 
-<h2>🔗 Repository</h2>
+```dart
+TextFormField(
+  keyboardType: TextInputType.phone,
+  validator: BdPhoneValidator.formValidator(
+    invalidMessage: 'সঠিক মোবাইল নম্বর দিন',
+  ),
+)
+```
 
-<p>Find this package on <strong>GitHub</strong>: <a href="https://github.com/jihanurrahman33/bd_phone_validator">Repository Link</a></p>
+## Strict vs lenient
 
-<h2>📜 License</h2>
+| Method | Default |
+|---|---|
+| `validate` | strict (unchanged since 1.0, fully backward compatible) |
+| `tryParse`, `normalize`, `toE164`, `detectOperator`, `formValidator` | lenient |
 
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+## Note on operators
 
-<hr>
+Detection is prefix based. With Mobile Number Portability a number may have
+moved to another operator, so treat the result as a hint.
 
-<p>Happy coding! 🚀</p>
+## Contributing
+
+Issues and PRs are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MIT, see [LICENSE](LICENSE).

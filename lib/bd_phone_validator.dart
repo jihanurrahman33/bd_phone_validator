@@ -1,14 +1,7 @@
-library bd_phone_validator;
+/// Validate, normalize, format and detect the operator of Bangladeshi mobile
+/// numbers. Pure Dart, no dependencies.
+library;
 
-/// A Dart package for validating Bangladeshi phone numbers.
-class BdPhoneValidator {
-  /// Regular expression for Bangladeshi phone number validation.
-  static final RegExp _regExp = RegExp(r'^(?:\+88|88)?(01[3-9]\d{8})$');
-
-  /// Validates a phone number.
-  ///
-  /// Returns `true` if the phone number is valid, otherwise `false`.
-  static bool validate(String phoneNumber) {
-    return _regExp.hasMatch(phoneNumber);
-  }
-}
+export 'src/bd_operator.dart' show BdOperator;
+export 'src/bd_phone.dart' show BdPhone;
+export 'src/bd_phone_validator_base.dart' show BdPhoneValidator;
